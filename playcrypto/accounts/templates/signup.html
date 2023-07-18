@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+</head>
+<body>
+    <h2>Signup</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" id="id_username"><br>
+        <label for="id_email">Email:</label>
+        <input type="email" name="email" id="id_email"><br>
+        <label for="id_password1">Password:</label>
+        <input type="password" name="password1" id="id_password1"><br>
+        <label for="id_password2">Confirm Password:</label>
+        <input type="password" name="password2" id="id_password2"><br>
+        <button type="submit">Signup</button>
+    </form>
+</body>
+</html>
+
