@@ -22,6 +22,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('playcrypto/', include('playcrypto.urls')),
     path('account/', include('account.urls')),
-    path('cobo/', include('cobo.urls')),
     # path('', include('cobo.urls')),
 ]
