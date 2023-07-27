@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect
 from .models import Post
 from .forms import PostForm
@@ -11,7 +10,9 @@ def post_create(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)  # 객체 생성을 지연시킴
+            post.author = request.user  # 현재 로그인한 사용자를 작성자로 설정
+            post.save()
             return redirect('cobo:board_list')  # 작성 완료 후 게시물 목록 페이지로 리디렉션
     else:
         form = PostForm()
