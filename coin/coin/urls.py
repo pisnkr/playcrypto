@@ -16,13 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from cobo import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('playcrypto/', include('playcrypto.urls')),
-    path('account/', include('account.urls')),
+    path('common/', include('common.urls')),
     path('cobo/', include('cobo.urls')),
     path('chat/', include('chat.urls')),
+    path('', views.index, name='index'), 
     # path('', include('cobo.urls')),
 ]
