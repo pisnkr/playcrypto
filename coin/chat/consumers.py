@@ -22,12 +22,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
         message = text_data_json["message"]
+        user_name = self.scope["user"].username  # 사용자 이름 가져오기
 
-        # Send message to room group
+        # Send message to room group with user name
         await self.channel_layer.group_send(
-            self.room_group_name, {"type": "chat_message", "message" : message}
+            self.room_group_name,
+            {"type": "chat_message", "message": f"{user_name}: {message}"}
         )
-
     # Receive message from room group
     async def chat_message(self, event):
         message = event["message"]

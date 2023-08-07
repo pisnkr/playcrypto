@@ -65,11 +65,12 @@ def answer_create(request, question_id):
             answer.create_date = timezone.now()
             answer.question = question
             answer.save()
+            question = answer.question 
             return redirect('{}#answer_{}'.format(resolve_url('cobo:detail', question_id=question.id), answer.id))
     else:
         form = AnswerForm()
     context = {'question': question, 'form': form}
-    return render(request, 'cobo/question_detail.html', context)
+    return render(request, 'cobo/question_det2ail.html', context)
 
 @login_required(login_url='common:login')
 def question_modify(request, question_id):
@@ -101,6 +102,7 @@ def question_delete(request, question_id):
 @login_required(login_url='common:login')
 def answer_modify(request, answer_id):
     answer = get_object_or_404(Answer, pk=answer_id)
+    question = answer.question 
     if request.user != answer.author:
         messages.error(request, '수정권한이 없습니다')
         return redirect('cobo:detail', question_id=answer.question.id)
@@ -138,8 +140,11 @@ def question_vote(request, question_id):
 @login_required(login_url='common:login')
 def answer_vote(request, answer_id):
     answer = get_object_or_404(Answer, pk=answer_id)
+    question = answer.question 
     if request.user == answer.author:
         messages.error(request, '본인이 작성한 글은 추천할수 없습니다')
     else:
         answer.voter.add(request.user)
     return redirect('{}#answer_{}'.format(resolve_url('cobo:detail', question_id=question.id), answer.id))
+
+

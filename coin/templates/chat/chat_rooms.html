@@ -1,0 +1,22 @@
+<!-- {% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <h1>Chat Rooms</h1>
+  <ul>
+    {% for room in rooms %}
+      <li><a href="{% url 'chat:room' room.id %}">{{ room.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %} -->
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <h1>Chat Rooms</h1>
+  <ul>
+    {% for chat_room in chat_rooms %}
+      <li><a href="{% url 'chat:room' chat_room.name %}">{{ chat_room.name }}</a></li>
+    {% endfor %}
+      <li><a href="{% url 'chat:create_chat_room' %}">Create a New Chat Room</a></li>  <!-- 새 채팅방 추가 링크 -->
+  </ul>
+{% endblock %}

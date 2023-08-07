@@ -4,7 +4,7 @@
 {% block content %}
 <div id="layoutSidenav_content">
 
-<main>
+<!-- <main>
     <meta charset="utf-8"/>
     <title>Chat Rooms</title>
 
@@ -12,7 +12,15 @@
     What chat room would you like to enter?<br>
     <input id="room-name-input" type="text" size="100"><br>
     <input id="room-name-submit" type="button" value="Enter">
-</tbody>
+</tbody> -->
+<main>
+    <meta charset="utf-8"/>
+    <title>Chat Rooms</title>
+
+    <tbody>
+        What chat room would you like to enter?<br>
+        <a href="{% url 'chat:chat_rooms' %}">Chat Rooms</a>  <!-- 채팅방 목록으로 이동하는 링크 -->
+    </tbody>
     <script>
         document.querySelector('#room-name-input').focus();
         document.querySelector('#room-name-input').onkeyup = function(e) {
