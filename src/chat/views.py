@@ -26,3 +26,4 @@ def chat_rooms(request):
     chat_rooms = ChatRoom.objects.all()
     return render(request, 'chat/chat_rooms.html', {'chat_rooms': chat_rooms})
 
+
