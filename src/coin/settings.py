@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     "daphne",
+    "channels",
     "rest_framework",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -81,6 +82,7 @@ TEMPLATES = [
 ]
 
 ASGI_APPLICATION = "coin.asgi.application"
+
 # socket_channels/settings.py
 # Channels
 CHANNEL_LAYERS = {
@@ -146,11 +148,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),  # 예시: common 앱의 정적 파일 경로
-#     # 다른 앱의 정적 파일 경로도 추가할 수 있습니다.
-# ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
